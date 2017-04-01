@@ -7,13 +7,19 @@ package com.codeclan.shoppingbasket;
 public class Item{
 
     private int productId;
+    private String name;
 
-    public Item(int productId){
+    public Item(int productId, String name){
         this.productId = productId;
+        this.name = name;
     }
 
 
    public int getProductId(){
        return this.productId;
+   }
+
+   public String getName(){
+       return this.name;
    }
 }

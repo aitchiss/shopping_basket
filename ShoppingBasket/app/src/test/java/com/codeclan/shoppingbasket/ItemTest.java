@@ -18,8 +18,8 @@ public class ItemTest {
 
     @Before
     public void before(){
-        bread = new Item(1234);
-        bread2 = new Item(1234);
+        bread = new Item(1234, "Hovis bread");
+        bread2 = new Item(1234, "Hovis bread");
     }
 
     @Test
@@ -30,6 +30,12 @@ public class ItemTest {
     @Test
     public void similarItemsHaveSameId(){
         assertEquals(bread.getProductId(), bread2.getProductId());
+    }
+
+    @Test
+    public void itemHasName(){
+        String name = bread.getName();
+        assertEquals("Hovis bread", name);
     }
 
 
