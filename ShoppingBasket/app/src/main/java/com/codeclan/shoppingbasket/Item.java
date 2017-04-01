@@ -4,8 +4,16 @@ package com.codeclan.shoppingbasket;
  * Created by user on 01/04/2017.
  */
 
-public interface Item {
+public class Item{
 
-    public int getId();
+    private int productId;
 
+    public Item(int productId){
+        this.productId = productId;
+    }
+
+
+   public int getProductId(){
+       return this.productId;
+   }
 }

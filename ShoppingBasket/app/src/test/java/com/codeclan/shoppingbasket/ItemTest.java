@@ -18,18 +18,18 @@ public class ItemTest {
 
     @Before
     public void before(){
-        bread = new Bread();
-        bread2 = new Bread();
+        bread = new Item(1234);
+        bread2 = new Item(1234);
     }
 
     @Test
     public void itemHasId(){
-        assertNotNull(bread.getId());
+        assertNotNull(bread.getProductId());
     }
 
     @Test
     public void similarItemsHaveSameId(){
-        assertEquals(bread.getId(), bread2.getId());
+        assertEquals(bread.getProductId(), bread2.getProductId());
     }
 
 
