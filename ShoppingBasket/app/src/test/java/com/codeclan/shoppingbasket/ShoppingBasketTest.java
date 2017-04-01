@@ -14,11 +14,13 @@ public class ShoppingBasketTest {
 
     ShoppingBasket shoppingBasket;
     Item bread;
+    Item cheese;
 
     @Before
     public void before(){
         shoppingBasket = new ShoppingBasket();
         bread = new Item(1234, "Hovis Bread", 120);
+        cheese = new Item(5432, "Basics Cheddar", 175);
     }
 
     @Test
@@ -30,5 +32,12 @@ public class ShoppingBasketTest {
     public void testCanAddToBasket(){
         shoppingBasket.addItem(bread);
         assertEquals(1, shoppingBasket.getItems().size());
+    }
+
+    @Test
+    public void testCanAddMultipleItems(){
+        shoppingBasket.addItem(bread);
+        shoppingBasket.addItem(cheese);
+        assertEquals(2, shoppingBasket.getItems().size());
     }
 }
