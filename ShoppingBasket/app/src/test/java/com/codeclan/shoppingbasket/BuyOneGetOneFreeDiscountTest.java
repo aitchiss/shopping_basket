@@ -59,5 +59,12 @@ public class BuyOneGetOneFreeDiscountTest {
         assertEquals(0, bogofDiscount.calculateDeductions(shoppingBasket.getItems()));
     }
 
+    @Test
+    public void calculateDeductionsHandlesMultipleItemTypes(){
+        bogofDiscount.addToOffer(cheese);
+        bogofDiscount.addToOffer(bread);
+        assertEquals(270, bogofDiscount.calculateDeductions(shoppingBasket.getItems()));
+    }
+
 
 }
