@@ -22,7 +22,7 @@ public class LoyaltyCardPercentageDiscount implements CustomerDiscount, Discount
         if (customer.hasLoyaltyCard() == false){
             return 0;
         } else {
-            return 1;
+            return (totalSpend/100) * this.percentageToDiscount;
         }
     }
 }

@@ -33,4 +33,10 @@ public class LoyaltyCardPercentageDiscountTest {
     public void testDeductionForNoLoyaltyCardIsZero(){
         assertEquals(0, loyaltyCardPercentageDiscount.calculateDeductions(customer, 240));
     }
+
+    @Test
+    public void testDeductionReturnedForCardHolders(){
+        customer.addLoyaltyCard(123456788);
+        assertEquals(4, loyaltyCardPercentageDiscount.calculateDeductions(customer, 240));
+    }
 }
