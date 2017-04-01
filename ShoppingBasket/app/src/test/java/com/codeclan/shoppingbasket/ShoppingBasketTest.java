@@ -40,4 +40,13 @@ public class ShoppingBasketTest {
         shoppingBasket.addItem(cheese);
         assertEquals(2, shoppingBasket.getItems().size());
     }
+
+    @Test
+    public void testCanDeleteItemFromBasket(){
+        shoppingBasket.addItem(bread);
+        shoppingBasket.addItem(cheese);
+        shoppingBasket.deleteItem(bread);
+        assertEquals(1, shoppingBasket.getItems().size());
+        assertEquals(cheese, shoppingBasket.getItems().get(0));
+    }
 }
