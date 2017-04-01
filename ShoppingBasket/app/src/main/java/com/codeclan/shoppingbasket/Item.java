@@ -11,10 +11,12 @@ public class Item{
 
     private int productId;
     private String name;
+    private int price; //in pence
 
-    public Item(int productId, String name){
+    public Item(int productId, String name, int price){
         this.productId = productId;
         this.name = name;
+        this.price = price;
     }
 
 
@@ -24,5 +26,9 @@ public class Item{
 
    public String getName(){
        return this.name;
+   }
+
+   public int getPrice(){
+       return this.price;
    }
 }

@@ -17,7 +17,7 @@ public class ItemTest {
 
     @Before
     public void before(){
-        bread = new Item(1234, "Hovis bread");
+        bread = new Item(1234, "Hovis bread", 120);
     }
 
     @Test
@@ -30,6 +30,11 @@ public class ItemTest {
     public void itemHasName(){
         String name = bread.getName();
         assertEquals("Hovis bread", name);
+    }
+
+    @Test
+    public void itemHasPrice(){
+        assertEquals(120, bread.getPrice());
     }
 
 
