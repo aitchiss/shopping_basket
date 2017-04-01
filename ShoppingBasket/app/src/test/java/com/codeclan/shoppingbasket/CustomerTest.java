@@ -42,4 +42,10 @@ public class CustomerTest {
         customer.addLoyaltyCard(987654321);
         assertEquals(true, customer.hasLoyaltyCard());
     }
+
+    @Test
+    public void canGetLoyaltyCardNumber(){
+        customer.addLoyaltyCard(987654321);
+        assertEquals(987654321, customer.getLoyaltyCardNumber());
+    }
 }

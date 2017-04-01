@@ -35,4 +35,8 @@ public class Customer {
     public void addLoyaltyCard(int cardNumber){
         this.loyaltyCardNumber = cardNumber;
     }
+
+    public int getLoyaltyCardNumber(){
+        return this.loyaltyCardNumber;
+    }
 }
