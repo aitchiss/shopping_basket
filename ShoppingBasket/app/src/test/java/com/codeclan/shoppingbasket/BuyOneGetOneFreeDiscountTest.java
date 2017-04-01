@@ -15,17 +15,21 @@ public class BuyOneGetOneFreeDiscountTest {
     BuyOneGetOneFreeDiscount bogofDiscount;
     Item bread;
     ShoppingBasket shoppingBasket;
+    Item cheese;
 
 
     @Before
     public void before(){
         bogofDiscount = new BuyOneGetOneFreeDiscount();
         bread = new Item(1234, "Hovis bread", 120);
+        cheese = new Item(4532, "cheddar", 150);
 
         shoppingBasket = new ShoppingBasket();
         shoppingBasket.addItem(bread);
         shoppingBasket.addItem(bread);
         shoppingBasket.addItem(bread);
+        shoppingBasket.addItem(cheese);
+        shoppingBasket.addItem(cheese);
     }
 
     @Test
@@ -41,8 +45,18 @@ public class BuyOneGetOneFreeDiscountTest {
 
     @Test
     public void isInOfferReturnsFalseIfNotInOffer(){
-        Item cheese = new Item(4532, "cheddar", 150);
         assertEquals(false, bogofDiscount.isInOffer(cheese));
+    }
+
+    @Test
+    public void canCalculateDeductionsBasedOnBasketContents(){
+        bogofDiscount.addToOffer(bread);
+        assertEquals(120, bogofDiscount.calculateDeductions(shoppingBasket.getItems()));
+    }
+
+    @Test
+    public void calculateDeductionsHandlesZeroSavings(){
+        assertEquals(0, bogofDiscount.calculateDeductions(shoppingBasket.getItems()));
     }
 
 

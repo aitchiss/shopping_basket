@@ -34,5 +34,28 @@ public class BuyOneGetOneFreeDiscount implements ItemDiscount {
         return false;
     }
 
+    public int calculateDeductions(ArrayList<Item> items){
+        int savings = 0;
+
+        for (Integer productId : this.productsInOffer){
+            //check how many there are in items
+            ArrayList<Item> itemOfSameId = new ArrayList<Item>();
+
+            for (Item item: items){
+                if (productId == item.getProductId()){
+                    itemOfSameId.add(item);
+                }
+            }
+            //deduct appropriate amount
+            int numberOfItemToDiscount = itemOfSameId.size() / 2;
+            savings += numberOfItemToDiscount * itemOfSameId.get(0).getPrice();
+        }
+        return savings;
+    }
+
+
+
+
+
 
 }

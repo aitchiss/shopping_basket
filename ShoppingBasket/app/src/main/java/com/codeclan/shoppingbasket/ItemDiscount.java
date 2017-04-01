@@ -8,5 +8,5 @@ import java.util.ArrayList;
 
 public interface ItemDiscount extends Discount {
 
-//    public int calculateDeductions(ArrayList<Item> items);
+    public int calculateDeductions(ArrayList<Item> items);
 }
