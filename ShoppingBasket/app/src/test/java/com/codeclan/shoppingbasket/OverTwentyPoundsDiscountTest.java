@@ -14,19 +14,11 @@ public class OverTwentyPoundsDiscountTest {
 
     OverTwentyPoundsDiscount overTwentyPoundsDiscount;
     ShoppingBasket shoppingBasket;
-    Customer customer;
 
     @Before
     public void before(){
         overTwentyPoundsDiscount = new OverTwentyPoundsDiscount();
         shoppingBasket = new ShoppingBasket();
-//        Item bread = new Item(1234, "hovis bread", 120);
-//        Item lobster = new Item(5632, "lobster dinner for two", 2550);
-//        shoppingBasket.addItem(bread);
-//        shoppingBasket.addItem(lobster);
-
-        customer = new Customer("Suzanne", shoppingBasket);
-
     }
 
     @Test
@@ -36,11 +28,11 @@ public class OverTwentyPoundsDiscountTest {
 
     @Test
     public void testDeductsTenPercentIfTotalOverTwenty(){
-        assertEquals(267, overTwentyPoundsDiscount.calculateDiscounts(customer, 2670));
+        assertEquals(267, overTwentyPoundsDiscount.calculateDeductions(2670));
     }
 
     @Test
     public void testDiscountDoesntApplyUnderTwenty(){
-        assertEquals(0, overTwentyPoundsDiscount.calculateDiscounts(customer, 1000));
+        assertEquals(0, overTwentyPoundsDiscount.calculateDeductions(1000));
     }
 }

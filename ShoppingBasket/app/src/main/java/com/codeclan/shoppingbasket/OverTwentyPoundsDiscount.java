@@ -13,8 +13,8 @@ public class OverTwentyPoundsDiscount implements TotalSpendDiscount {
         return this.description;
     }
 
-    public int calculateDiscounts(Customer customer, int totalSpend){
-        if (totalSpend > 20000){
+    public int calculateDeductions(int totalSpend){
+        if (totalSpend > 2000){
             double discount = (this.percentageToDiscount/100) * totalSpend;
             int totalDiscount = (int) Math.round(discount);
             return totalDiscount;

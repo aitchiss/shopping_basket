@@ -6,5 +6,5 @@ package com.codeclan.shoppingbasket;
 
 public interface TotalSpendDiscount extends Discount {
 
-//    public int calculateDeductions(Customer customer, int totalSpend);
+    public int calculateDeductions(int totalSpend);
 }
