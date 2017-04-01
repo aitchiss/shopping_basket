@@ -36,5 +36,10 @@ public class CustomerTest {
     public void testCustomerStartsWithNoLoyaltyCard(){
         assertEquals(false, customer.hasLoyaltyCard());
     }
-    
+
+    @Test
+    public void canAddLoyaltyCard(){
+        customer.addLoyaltyCard(987654321);
+        assertEquals(true, customer.hasLoyaltyCard());
+    }
 }

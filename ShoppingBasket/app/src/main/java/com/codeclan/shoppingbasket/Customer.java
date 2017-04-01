@@ -31,4 +31,8 @@ public class Customer {
             return false;
         }
     }
+
+    public void addLoyaltyCard(int cardNumber){
+        this.loyaltyCardNumber = cardNumber;
+    }
 }
