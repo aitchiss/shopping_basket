@@ -5,4 +5,6 @@ package com.codeclan.shoppingbasket;
  */
 
 public interface CustomerDiscount {
+
+    public int calculateDeductions(Customer customer, int totalSpend);
 }

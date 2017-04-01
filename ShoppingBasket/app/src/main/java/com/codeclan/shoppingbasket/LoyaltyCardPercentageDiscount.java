@@ -17,4 +17,12 @@ public class LoyaltyCardPercentageDiscount implements CustomerDiscount, Discount
     public String getDescription(){
         return this.description;
     }
+
+    public int calculateDeductions(Customer customer, int totalSpend){
+        if (customer.hasLoyaltyCard() == false){
+            return 0;
+        } else {
+            return 1;
+        }
+    }
 }
