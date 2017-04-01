@@ -14,12 +14,10 @@ import static org.junit.Assert.assertNotNull;
 public class ItemTest {
 
     Item bread;
-    Item bread2;
 
     @Before
     public void before(){
         bread = new Item(1234, "Hovis bread");
-        bread2 = new Item(1234, "Hovis bread");
     }
 
     @Test
@@ -27,10 +25,6 @@ public class ItemTest {
         assertNotNull(bread.getProductId());
     }
 
-    @Test
-    public void similarItemsHaveSameId(){
-        assertEquals(bread.getProductId(), bread2.getProductId());
-    }
 
     @Test
     public void itemHasName(){
