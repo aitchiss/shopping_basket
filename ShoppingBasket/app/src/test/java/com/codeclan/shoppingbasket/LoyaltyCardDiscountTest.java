@@ -10,14 +10,14 @@ import static org.junit.Assert.assertEquals;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
-public class LoyaltyCardPercentageDiscountTest {
+public class LoyaltyCardDiscountTest {
 
-    LoyaltyCardPercentageDiscount loyaltyCardPercentageDiscount;
+    LoyaltyCardDiscount loyaltyCardDiscount;
     Customer customer;
 
     @Before
     public void before(){
-        loyaltyCardPercentageDiscount = new LoyaltyCardPercentageDiscount("2% off final total for loyalty card holders", 2);
+        loyaltyCardDiscount = new LoyaltyCardDiscount();
         ShoppingBasket shoppingBasket = new ShoppingBasket();
         shoppingBasket.addItem(new Item(1234, "bread", 120));
         shoppingBasket.addItem(new Item(1234, "bread", 120));
@@ -26,17 +26,17 @@ public class LoyaltyCardPercentageDiscountTest {
 
     @Test
     public void testDiscountHasDescription(){
-        assertEquals("2% off final total for loyalty card holders", loyaltyCardPercentageDiscount.getDescription());
+        assertEquals("2% off final total for loyalty card holders", loyaltyCardDiscount.getDescription());
     }
 
     @Test
     public void testDeductionForNoLoyaltyCardIsZero(){
-        assertEquals(0, loyaltyCardPercentageDiscount.calculateDeductions(customer, 240));
+        assertEquals(0, loyaltyCardDiscount.calculateDeductions(customer, 240));
     }
 
     @Test
     public void testDeductionReturnedForCardHolders(){
         customer.addLoyaltyCard(123456788);
-        assertEquals(4, loyaltyCardPercentageDiscount.calculateDeductions(customer, 240));
+        assertEquals(5, loyaltyCardDiscount.calculateDeductions(customer, 240));
     }
 }
