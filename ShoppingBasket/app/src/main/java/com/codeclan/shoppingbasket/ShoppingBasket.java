@@ -18,4 +18,8 @@ public class ShoppingBasket {
     public ArrayList<Item> getItems(){
         return this.itemsInBasket;
     }
+
+    public void addItem(Item item){
+        this.itemsInBasket.add(item);
+    }
 }

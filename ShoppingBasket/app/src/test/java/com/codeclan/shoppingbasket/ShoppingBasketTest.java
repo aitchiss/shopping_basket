@@ -13,14 +13,22 @@ import static org.junit.Assert.assertEquals;
 public class ShoppingBasketTest {
 
     ShoppingBasket shoppingBasket;
+    Item bread;
 
     @Before
     public void before(){
         shoppingBasket = new ShoppingBasket();
+        bread = new Item(1234, "Hovis Bread", 120);
     }
 
     @Test
     public void shoppingBasketStartsEmpty(){
         assertEquals(0, shoppingBasket.getItems().size());
+    }
+
+    @Test
+    public void testCanAddToBasket(){
+        shoppingBasket.addItem(bread);
+        assertEquals(1, shoppingBasket.getItems().size());
     }
 }
