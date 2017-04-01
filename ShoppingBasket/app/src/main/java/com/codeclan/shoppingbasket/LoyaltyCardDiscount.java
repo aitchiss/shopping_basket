@@ -4,7 +4,7 @@ package com.codeclan.shoppingbasket;
  * Created by user on 01/04/2017.
  */
 
-public class LoyaltyCardDiscount implements CustomerDiscount{
+public class LoyaltyCardDiscount implements TotalSpendDiscount {
 
     private String description = "2% off final total for loyalty card holders";
     private double percentageToDiscount = 2.0;
