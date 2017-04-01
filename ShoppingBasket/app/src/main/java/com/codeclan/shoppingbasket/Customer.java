@@ -8,10 +8,12 @@ public class Customer {
 
     private String name;
     private ShoppingBasket shoppingBasket;
+    private int loyaltyCardNumber;
 
     public Customer(String name, ShoppingBasket shoppingBasket){
         this.name = name;
         this.shoppingBasket = shoppingBasket;
+        this.loyaltyCardNumber = -1;
     }
 
     public String getName(){
@@ -20,5 +22,13 @@ public class Customer {
 
     public ShoppingBasket getShoppingBasket(){
         return this.shoppingBasket;
+    }
+
+    public boolean hasLoyaltyCard(){
+        if (loyaltyCardNumber != -1){
+            return true;
+        } else {
+            return false;
+        }
     }
 }

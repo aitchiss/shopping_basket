@@ -31,4 +31,10 @@ public class CustomerTest {
     public void testCustomerHasShoppingBasket(){
         assertThat(customer.getShoppingBasket(), instanceOf(ShoppingBasket.class));
     }
+
+    @Test
+    public void testCustomerStartsWithNoLoyaltyCard(){
+        assertEquals(false, customer.hasLoyaltyCard());
+    }
+    
 }
