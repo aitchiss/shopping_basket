@@ -55,4 +55,8 @@ public class DiscountManager {
         }
         return total;
     }
+
+    public int getTotalSavings(Customer customer, ArrayList<Item> items){
+        return getInitialItemTotal(items) - returnTotalAfterDeductions(customer, items);
+    }
 }
