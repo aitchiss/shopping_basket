@@ -17,4 +17,8 @@ public class DiscountManager {
     public ArrayList<Discount> getCurrentDiscounts() {
         return currentDiscounts;
     }
+
+    public void addToCurrentDiscounts(Discount discount){
+        currentDiscounts.add(discount);
+    }
 }
