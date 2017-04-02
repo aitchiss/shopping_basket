@@ -14,11 +14,15 @@ public class DiscountManagerTest {
 
     DiscountManager discountManager;
     Discount bogofDiscount;
+    Discount loyaltyCardDiscount;
+    Discount overTwentyPoundsDiscount;
 
     @Before
     public void before(){
         discountManager = new DiscountManager();
         bogofDiscount = new BuyOneGetOneFreeDiscount();
+        loyaltyCardDiscount = new LoyaltyCardDiscount();
+        overTwentyPoundsDiscount = new OverTwentyPoundsDiscount();
     }
 
     @Test
@@ -29,6 +33,18 @@ public class DiscountManagerTest {
     @Test
     public void canAddDiscountToCurrentDiscounts(){
         discountManager.addToCurrentDiscounts(bogofDiscount);
+        assertEquals(1, discountManager.getCurrentDiscounts().size());
+    }
+
+    @Test
+    public void canAddCustomerDiscountToCurrentDiscounts(){
+        discountManager.addToCurrentDiscounts(loyaltyCardDiscount);
+        assertEquals(1, discountManager.getCurrentDiscounts().size());
+    }
+
+    @Test
+    public void canAddTotalSpendDiscountToCurrentDiscounts(){
+        discountManager.addToCurrentDiscounts(overTwentyPoundsDiscount);
         assertEquals(1, discountManager.getCurrentDiscounts().size());
     }
 }
