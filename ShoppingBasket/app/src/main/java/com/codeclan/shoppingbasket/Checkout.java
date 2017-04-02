@@ -21,4 +21,8 @@ public class Checkout {
     public DiscountManager getDiscountManager() {
         return discountManager;
     }
+
+    public int getTotalToPay(){
+        return discountManager.returnTotalAfterDeductions(customer, customer.getShoppingBasket().getItems());
+    }
 }
