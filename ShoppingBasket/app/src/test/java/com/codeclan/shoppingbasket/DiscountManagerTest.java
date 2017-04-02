@@ -118,4 +118,22 @@ public class DiscountManagerTest {
         int totalCost = discountManager.returnTotalAfterDeductions(customer, shoppingBasket.getItems());
         assertEquals(2428, totalCost);
     }
+
+    @Test
+    public void calculateFinalTotalWorksIfNoDiscounts(){
+        ShoppingBasket shoppingBasket = new ShoppingBasket();
+        Item milk = new Item(6654, "milk", 100);
+        shoppingBasket.addItem(milk);
+        shoppingBasket.addItem(milk);
+        shoppingBasket.addItem(bread);
+
+        Customer customer = new Customer("Suzanne", shoppingBasket);
+
+        discountManager.addToCurrentDiscounts(bogofDiscount);
+        discountManager.addToCurrentDiscounts(overTwentyPoundsDiscount);
+        discountManager.addToCurrentDiscounts(loyaltyCardDiscount);
+
+        int totalCost = discountManager.returnTotalAfterDeductions(customer, shoppingBasket.getItems());
+        assertEquals(299, totalCost);
+    }
 }
