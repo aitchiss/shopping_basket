@@ -14,16 +14,23 @@ public class CheckoutTest {
 
     Customer customer;
     Checkout checkout;
+    DiscountManager discountManager;
 
     @Before
     public void before(){
         ShoppingBasket shoppingBasket = new ShoppingBasket();
+        discountManager = new DiscountManager();
         customer = new Customer("Suzanne", shoppingBasket);
-        checkout = new Checkout(customer);
+        checkout = new Checkout(customer, discountManager);
     }
 
     @Test
     public void testCheckoutHasCustomer(){
         assertEquals(customer, checkout.getCustomer());
+    }
+
+    @Test
+    public void testCheckoutHasDiscountManager(){
+        assertEquals(discountManager, checkout.getDiscountManager());
     }
 }
