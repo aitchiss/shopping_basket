@@ -30,4 +30,29 @@ public class DiscountManager {
         currentDiscounts.remove(discount);
         currentDiscounts.add(index, discount);
     }
+
+    public int returnTotalAfterDeductions(Customer customer, ArrayList<Item> items){
+        int totalCost = getInitialItemTotal(items);
+        for (Discount discount : currentDiscounts){
+            if (discount instanceof ItemDiscount){
+                int deductions = ((ItemDiscount) discount).calculateDeductions(items);
+                totalCost -= deductions;
+            } else if (discount instanceof CustomerDiscount){
+                int deductions = ((CustomerDiscount) discount).calculateDeductions(customer, totalCost);
+                totalCost -= deductions;
+            } else if (discount instanceof TotalSpendDiscount){
+                int deductions = ((TotalSpendDiscount) discount).calculateDeductions(totalCost);
+                totalCost -= deductions;
+            }
+        }
+        return totalCost;
+    }
+
+    public int getInitialItemTotal(ArrayList<Item> items){
+        int total = 0;
+        for (Item item: items){
+            total += item.getPrice();
+        }
+        return total;
+    }
 }

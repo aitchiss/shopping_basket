@@ -13,14 +13,19 @@ import static org.junit.Assert.assertEquals;
 public class DiscountManagerTest {
 
     DiscountManager discountManager;
-    Discount bogofDiscount;
-    Discount loyaltyCardDiscount;
-    Discount overTwentyPoundsDiscount;
+    BuyOneGetOneFreeDiscount bogofDiscount;
+    CustomerDiscount loyaltyCardDiscount;
+    TotalSpendDiscount overTwentyPoundsDiscount;
+    Item bread;
 
     @Before
     public void before(){
+        bread = new Item(1234, "White bread", 99);
+
         discountManager = new DiscountManager();
         bogofDiscount = new BuyOneGetOneFreeDiscount();
+        bogofDiscount.addToOffer(bread);
+
         loyaltyCardDiscount = new LoyaltyCardDiscount();
         overTwentyPoundsDiscount = new OverTwentyPoundsDiscount();
     }
@@ -62,5 +67,34 @@ public class DiscountManagerTest {
         discountManager.addToCurrentDiscounts(loyaltyCardDiscount);
         discountManager.changeDiscountPriority(loyaltyCardDiscount, 0);
         assertEquals(0, discountManager.getCurrentDiscounts().indexOf(loyaltyCardDiscount));
+    }
+
+    @Test
+    public void testCanCalculateAllDiscountDeductions(){
+        ShoppingBasket shoppingBasket = new ShoppingBasket();
+        Item milk = new Item(6654, "milk", 100);
+        Item fancyWine = new Item(8778, "very nice wine", 2300);
+        shoppingBasket.addItem(fancyWine);
+        shoppingBasket.addItem(milk);
+        shoppingBasket.addItem(milk);
+        shoppingBasket.addItem(bread);
+        shoppingBasket.addItem(bread);
+        shoppingBasket.addItem(bread);
+
+        Customer customer = new Customer("Suzanne", shoppingBasket);
+        customer.addLoyaltyCard(123456);
+
+        discountManager.addToCurrentDiscounts(bogofDiscount);
+        discountManager.addToCurrentDiscounts(overTwentyPoundsDiscount);
+        discountManager.addToCurrentDiscounts(loyaltyCardDiscount);
+
+        int totalCost = discountManager.returnTotalAfterDeductions(customer, shoppingBasket.getItems());
+        //total spend is 2797
+        // bogof deduction is 99, leaving 2698
+        // overtwenty deduction is 270 leaving 2428
+        // loyalty deduction is 49
+        // total deductions should be 418, final total should be 2379
+        assertEquals(2379, totalCost);
+
     }
 }
