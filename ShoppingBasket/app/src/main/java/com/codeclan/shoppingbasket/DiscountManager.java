@@ -25,4 +25,9 @@ public class DiscountManager {
     public void removeFromCurrentDiscounts(Discount discount){
         currentDiscounts.remove(discount);
     }
+
+    public void changeDiscountPriority(Discount discount, int index){
+        currentDiscounts.remove(discount);
+        currentDiscounts.add(index, discount);
+    }
 }

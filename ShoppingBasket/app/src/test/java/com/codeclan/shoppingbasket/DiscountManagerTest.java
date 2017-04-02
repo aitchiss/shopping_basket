@@ -54,4 +54,13 @@ public class DiscountManagerTest {
         discountManager.removeFromCurrentDiscounts(overTwentyPoundsDiscount);
         assertEquals(0, discountManager.getCurrentDiscounts().size());
     }
+
+    @Test
+    public void canChangePositionOfDiscount(){
+        discountManager.addToCurrentDiscounts(bogofDiscount);
+        discountManager.addToCurrentDiscounts(overTwentyPoundsDiscount);
+        discountManager.addToCurrentDiscounts(loyaltyCardDiscount);
+        discountManager.changeDiscountPriority(loyaltyCardDiscount, 0);
+        assertEquals(0, discountManager.getCurrentDiscounts().indexOf(loyaltyCardDiscount));
+    }
 }
