@@ -38,7 +38,7 @@ public class BuyOneGetOneFreeDiscount implements ItemDiscount {
         int savings = 0;
 
         for (Integer productId : this.productsInOffer){
-            //check how many there are in items
+            //build a list of the matching items for this product offer
             ArrayList<Item> itemOfSameId = new ArrayList<Item>();
 
             for (Item item: items){
@@ -52,10 +52,5 @@ public class BuyOneGetOneFreeDiscount implements ItemDiscount {
         }
         return savings;
     }
-
-
-
-
-
 
 }

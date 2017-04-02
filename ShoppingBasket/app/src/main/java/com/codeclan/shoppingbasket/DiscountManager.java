@@ -33,6 +33,7 @@ public class DiscountManager {
 
     public int returnTotalAfterDeductions(Customer customer, ArrayList<Item> items){
         int totalCost = getInitialItemTotal(items);
+
         for (Discount discount : currentDiscounts){
             if (discount instanceof ItemDiscount){
                 int deductions = ((ItemDiscount) discount).calculateDeductions(items);

@@ -6,8 +6,8 @@ package com.codeclan.shoppingbasket;
 
 public class Item{
 
-    //In reality, existing productIDs (barcodes) and their associated names and price would likely
-    // be held in a database. Have included name and price in constructor here for simplicity.
+    //productID represents barcode - in reality, name of product/price would be linked to barcode
+    //in database or similar. Have included in constructor for simplicity.
 
     private int productId;
     private String name;
