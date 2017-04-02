@@ -25,4 +25,9 @@ public class Checkout {
     public int getTotalToPay(){
         return discountManager.returnTotalAfterDeductions(customer, customer.getShoppingBasket().getItems());
     }
+
+    public int getTotalDiscountsApplied(){
+        int totalBeforeDiscounts = discountManager.getInitialItemTotal(customer.getShoppingBasket().getItems());
+        return totalBeforeDiscounts - getTotalToPay();
+    }
 }

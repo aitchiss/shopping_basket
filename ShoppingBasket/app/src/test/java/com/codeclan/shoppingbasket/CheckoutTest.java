@@ -53,6 +53,10 @@ public class CheckoutTest {
         int expectedTotal = 3299;
         int calculatedTotal = checkout.getTotalToPay();
         assertEquals(expectedTotal, calculatedTotal);
+    }
 
+    @Test
+    public void testCheckoutCanTellCustomerHowMuchSaved(){
+        assertEquals(561, checkout.getTotalDiscountsApplied());
     }
 }
