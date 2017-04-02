@@ -95,6 +95,27 @@ public class DiscountManagerTest {
         // loyalty deduction is 49
         // total deductions should be 418, final total should be 2379
         assertEquals(2379, totalCost);
+    }
 
+    @Test
+    public void calculateFinalTotalWorksIfSomeDiscountsNotApplied(){
+        ShoppingBasket shoppingBasket = new ShoppingBasket();
+        Item milk = new Item(6654, "milk", 100);
+        Item fancyWine = new Item(8778, "very nice wine", 2300);
+        shoppingBasket.addItem(fancyWine);
+        shoppingBasket.addItem(milk);
+        shoppingBasket.addItem(milk);
+        shoppingBasket.addItem(bread);
+        shoppingBasket.addItem(bread);
+        shoppingBasket.addItem(bread);
+
+        Customer customer = new Customer("Suzanne", shoppingBasket);
+
+        discountManager.addToCurrentDiscounts(bogofDiscount);
+        discountManager.addToCurrentDiscounts(overTwentyPoundsDiscount);
+        discountManager.addToCurrentDiscounts(loyaltyCardDiscount);
+
+        int totalCost = discountManager.returnTotalAfterDeductions(customer, shoppingBasket.getItems());
+        assertEquals(2428, totalCost);
     }
 }
