@@ -21,4 +21,8 @@ public class DiscountManager {
     public void addToCurrentDiscounts(Discount discount){
         currentDiscounts.add(discount);
     }
+
+    public void removeFromCurrentDiscounts(Discount discount){
+        currentDiscounts.remove(discount);
+    }
 }

@@ -47,4 +47,11 @@ public class DiscountManagerTest {
         discountManager.addToCurrentDiscounts(overTwentyPoundsDiscount);
         assertEquals(1, discountManager.getCurrentDiscounts().size());
     }
+
+    @Test
+    public void canRemoveFromCurrentDiscounts(){
+        discountManager.addToCurrentDiscounts(overTwentyPoundsDiscount);
+        discountManager.removeFromCurrentDiscounts(overTwentyPoundsDiscount);
+        assertEquals(0, discountManager.getCurrentDiscounts().size());
+    }
 }
